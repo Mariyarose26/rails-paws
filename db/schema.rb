@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_044546) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer "status"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pet_id"], name: "index_bookings_on_pet_id"
@@ -29,7 +30,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_044546) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "pet_type"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
