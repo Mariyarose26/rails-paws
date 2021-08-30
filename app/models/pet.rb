@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  PET = ["dog", "cat", "bird", "other"]
+  PET = ["Dog", "Cat", "Bird", "Other"]
   has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
   validates :name, presence: true
