@@ -114,6 +114,7 @@ GEM
     marcel (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.1)
+    mini_portile2 (2.6.1)
     minitest (5.14.4)
     msgpack (1.4.2)
     nio4r (2.5.8)
@@ -234,10 +235,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-18
-<<<<<<< HEAD
   x86_64-linux
-=======
->>>>>>> f6ff261476da4d28e2d49b933d3334163957fcda
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)
@@ -269,4 +267,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.25
+   2.2.26
