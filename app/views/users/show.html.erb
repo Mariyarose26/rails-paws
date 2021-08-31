@@ -2,14 +2,14 @@
 <%# # User should be able see, create, edit and delete his pets
 # user should be able to view all his details, edit %>
 
-<div class="profile">
- <%# # profile image %>
+<div class="profile container">
   <img src="https://source.unsplash.com/random/150x150" />
   <div class="info">
-      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <h4>Hi <%= @user.first_name %> <%= @user.last_name %></h4>
+      <h3>Your details</h3>
       <p><%= @user.email %></p>
       <p><%= @user.address %></p>
-      <p>Pet<%= @user.user_type %></p>
+      <p><strong>Pet: </strong><%= @user.user_type %></p>
   </div>
   <div class="action-routes">
     <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
