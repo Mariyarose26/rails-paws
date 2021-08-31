@@ -1,5 +1,7 @@
 <%= simple_form_for(@pet) do |f| %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :name %>
-  <%= f.input :pet_type%>
-  <%= f.submit %>
+  <%= f.input :pet_type, :collection => %w[Dog Cat Other] %>
+  <%= f.submit  %>
+
 <% end %>
