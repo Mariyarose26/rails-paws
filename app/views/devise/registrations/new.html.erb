@@ -8,34 +8,33 @@
     <%= f.input :first_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "first-name" } %>
+                input_html: { autocomplete: "First Name" } %>
 
     <%= f.input :last_name,
                 required: true,
-                input_html: { autocomplete: "last-name" } %>
+                input_html: { autocomplete: "Last Name" } %>
 
     <%= f.input :email,
                 required: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "Email" } %>
 
     <%= f.input :address,
                 required: true,
-                input_html: { autocomplete: "address" } %>
-
-  <% # need to fix input status %>
-   <% # f.input :status, collection: { 0, 1, 2 } %>
-
+                input_html: { autocomplete: "Address" } %>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "Password" } %>
     <%= f.input :password_confirmation,
                 required: true,
-                input_html: { autocomplete: "new-password" } %>
+                input_html: { autocomplete: "Confirm Password" } %>
+    <%= f.input :user_type, collection: User.user_types.keys %>
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
+
   </div>
 <% end %>
 

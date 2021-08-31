@@ -1,1 +1,21 @@
 <p>SHOW PAGE</p>
+# User should be able see, create, edit and delete his pets
+# user should be able to view all his details, edit
+
+
+<%# display the cards %>
+<div class="profile">
+ <%# # profile image %>
+  <img src="https://source.unsplash.com/random/150x150" />
+  <div class="info">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+      <p><%= @user.email %></p>
+      <p><%= @user.address %></p>
+      <p>Pet<%= @user.user_type %></p>
+  </div>
+  <div class="action-routes">
+    <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+    <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+    <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+  </div>
+</div>
