@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
-    <% end %>
+    <a id="logo" href="<%= root_path %>"><%= image_tag "logo.jpg", width: "50" %></a>
+  <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,7 @@
             <%= link_to "Add Pet", new_pet_path, class: "dropdown-item" %>
             <%= link_to "Pets", pets_path, class: "dropdown-item" %>
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
