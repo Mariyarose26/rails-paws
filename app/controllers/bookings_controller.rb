@@ -1,4 +1,12 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.all
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @booking = Booking.new
     @pet = Pet.find(params[:pet_id])
@@ -8,13 +16,24 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @pet = Pet.find(params[:pet_id])
     @booking.pet = @pet
-    @user = User.find(@pet.user_id)
-    @booking.user = @user
+    @user = current_user
+    @booking.user_id = @user.id
     if @booking.save
       redirect_to pets_path
     else
       render :new
     end
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+
+    redirect_to booking_path(@booking)
   end
 
   def destroy
