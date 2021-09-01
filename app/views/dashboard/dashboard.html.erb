@@ -42,7 +42,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="tab-pane fade show" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
         <div class="row">
           <% @ownerbookings.each do |booking| %>
             <div class="col-4">
@@ -57,9 +57,9 @@
           <% end %>
         </div>
       </div>
-      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="row">
-          <% @bookings.each do |booking| %>
+          <% current_user.bookings.each do |booking| %>
             <div class="col-4">
               <div class="card">
                 <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
@@ -67,9 +67,9 @@
                 <p class="card-text"><%= booking.start_date %></p>
                 <p class="card-text"><%= booking.end_date %></p>
                 <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
-              <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
 </div>
