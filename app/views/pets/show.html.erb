@@ -1,13 +1,23 @@
-<div>
-<%= cl_image_tag @pet.photo.key, height: 300, width: 500 %>
+<div class = "d-flex p-5 ml-5" >
+<div class="container mb-5 p-3" >
+  <%= cl_image_tag @pet.photo.key, height: 300, width: 400 %>
+<br><br>
 <h3><%= @pet.name %></h3>
 <p><%= @pet.description %></p>
-<%= link_to "Book this pet", new_pet_booking_path(@pet) %>
-<%= link_to "Show booking for this pet", pet_bookings_path(@pet) %>
-<h3><%= @user.first_name %></h3>
+<%= link_to "Book this pet", new_pet_booking_path(@pet) %> <br><br>
+<%= link_to "View Bookings", pet_bookings_path(@pet) %> <br><br>
+  </div>
 
+<div class="container mb-2 p-3 " >
+<h3>Owner: <%= @user.first_name %> <%= @user.last_name %></h3>
+<%= @user.address %>
+<br><br>
+<% if current_user == @user%>
+  <%= link_to "Edit", edit_pet_path(@pet) %><br>
+  <%= link_to "Delete",
+            pet_path(@pet),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+ <% end  %>
+ </div>
 </div>
-<%= link_to "Delete",
-           pet_path(@pet),
-           method: :delete,
-           data: { confirm: "Are you sure?" } %>
