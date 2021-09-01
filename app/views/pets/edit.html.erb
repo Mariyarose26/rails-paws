@@ -2,6 +2,7 @@
   <%= f.input :photo, as: :file %>
   <%= f.input :name %>
   <%= f.input :pet_type, :collection => %w[Dog Cat Other] %>
+  <%= f.input :available, :collection => %w[Available Unavailable] %>
   <%= f.submit  %>
 
 <% end %>
