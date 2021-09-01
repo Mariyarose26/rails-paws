@@ -6,9 +6,18 @@
     <li class="list-group-item"><%= "Start Date - #{@booking.end_date}" %></li>
     <li class="list-group-item"><%= "Status - #{@booking.status}" %></li>
     <li class="list-group-item"><%= "Price - #{@booking.price}" %></li>
+
+    <li class="list-group-item"><%= "Price - #{@booking.price}" %></li>
+    <li class="list-group-item"><%= "Pet - #{@pet.name}" %></li>
+    <li class="list-group-item"><%= "Owner - #{@owner.first_name}" %></li>
+    <li class="list-group-item"><%= "Sitter - #{@sitter.first_name}" %></li>
+
 </ul>
 
 <%= link_to "Back to Home", pets_path %>
 <%= link_to "Back to Bookings", pet_bookings_path(@booking) %>
 <%= link_to "Edit", edit_booking_path(@booking) %>
-<%= link_to "Delete", edit_booking_path(@booking) %>
+    <%= link_to "Delete",
+                booking_path(@booking),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>

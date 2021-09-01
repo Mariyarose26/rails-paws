@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    @pets = Pet.all
+    @user = User.find(@pet.user_id)
   end
 
   def new
