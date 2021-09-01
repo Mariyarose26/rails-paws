@@ -1,0 +1,18 @@
+
+
+<div class="container mb-5">
+  <div class="row my-2">
+    <% @pet.users.each do |pet| %>
+
+
+    <% end %>
+  </div>
+
+
+<div>
+<%= cl_image_tag @pet.photo.key, height: 300, width: 500 %>
+<h3><%= @pet.name %></h3>
+<p><%= @pet.description %></p>
+
+
+</div>

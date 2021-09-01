@@ -13,6 +13,8 @@
     <%= f.input :last_name,
                 required: true,
                 input_html: { autocomplete: "last-name" } %>
+    
+    <%= f.input :photos, as: :file %>
 
     <%= f.input :email,
                 required: true,
@@ -21,10 +23,6 @@
     <%= f.input :address,
                 required: true,
                 input_html: { autocomplete: "address" } %>
-
-  <% # need to fix input status %>
-   <% # f.input :status, collection: { 0, 1, 2 } %>
-
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
@@ -32,10 +30,13 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :user_type, collection: User.user_types.keys %>
+
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
+
   </div>
 <% end %>
 
