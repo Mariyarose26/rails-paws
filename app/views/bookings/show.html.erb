@@ -1,0 +1,14 @@
+
+<h1>Booking ID: <%= @booking.id %></h1>
+
+<ul class="list-group">
+    <li class="list-group-item"><%= "Start Date - #{@booking.start_date}" %></li>
+    <li class="list-group-item"><%= "Start Date - #{@booking.end_date}" %></li>
+    <li class="list-group-item"><%= "Status - #{@booking.status}" %></li>
+    <li class="list-group-item"><%= "Price - #{@booking.price}" %></li>
+</ul>
+
+<%= link_to "Back to Home", pets_path %>
+<%= link_to "Back to Bookings", pet_bookings_path(@booking) %>
+<%= link_to "Edit", edit_booking_path(@booking) %>
+<%= link_to "Delete", edit_booking_path(@booking) %>
