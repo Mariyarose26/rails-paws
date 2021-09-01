@@ -10,9 +10,9 @@
     </li>
     <% end %>
     <% if current_user.user_type != "owner" %>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Applied Bookings</a>
-    </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Applied Bookings</a>
+      </li>
     <% end %>
   </ul>
   <div class="tab-content" id="pills-tabContent">
@@ -27,8 +27,13 @@
                     <div class="card-body">
                     <h4 class="card-title"><%= pet.name %></h4>
                     <p class="card-text"><%= pet.description %></p>
-                    <p class="card-text"><%= pet.available %></p>
+                    <% if pet.available %>
+                      <p class="card-text text-success">Requires a Sitter</p>
+                    <% else %>
+                      <p class="card-text text-warning">Doesnt Require a Sitter</p>
+                    <% end %>
                     <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
+                    <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-primary" %>
                     </div>
                   </div>
                 </div>
@@ -39,14 +44,14 @@
       </div>
       <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
         <div class="row">
-          <% @bookings.each do |b| %>
+          <% @ownerbookings.each do |booking| %>
             <div class="col-4">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title"><%= b.id %></h4>
-                  <p class="card-text"><%= b.start_date %></p>
-                  <p class="card-text"><%= b.end_date %></p>
-                </div>
+                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                <h4 class="card-title"><%= booking.id %></h4>
+                <p class="card-text"><%= booking.start_date %></p>
+                <p class="card-text"><%= booking.end_date %></p>
+                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
               </div>
             </div>
           <% end %>
@@ -54,20 +59,17 @@
       </div>
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="row">
-          <% @current_user_bookings.each do |b| %>
-          <% @pets.each do |p| %>
+          <% @bookings.each do |booking| %>
             <div class="col-4">
               <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title"><%= b.id %></h4>
-                  <p class="card-text"><%= b.start_date %></p>
-                  <p class="card-text"><%= b.end_date %></p>
-                </div>
-              </div>
+                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                <h4 class="card-title"><%= booking.id %></h4>
+                <p class="card-text"><%= booking.start_date %></p>
+                <p class="card-text"><%= booking.end_date %></p>
+                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
+              <% end %>
             </div>
-            <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
-  </div>
 </div>
