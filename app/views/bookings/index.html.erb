@@ -1,8 +1,9 @@
-
+<div class="p-5">
 <h1>Below are all the bookings for this pet</h1>
 
 <ul>
   <% @bookings.each do |booking| %>
-    <li><%= link_to booking.id, booking_path(booking) %></li>
+    <li><%= link_to booking.id, booking_path(booking) %> </li>
   <% end %>
 </ul>
+</div>
