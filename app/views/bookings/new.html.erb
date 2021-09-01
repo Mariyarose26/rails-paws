@@ -1,0 +1,9 @@
+<h1>Book this Pet!</h1>
+
+<%= simple_form_for [@pet, @booking] do |f| %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :status, collection: Booking.statuses.keys %>
+  <%= f.input :price %>
+  <%= f.submit %>
+<% end %>
