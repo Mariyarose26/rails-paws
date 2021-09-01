@@ -5,6 +5,9 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @sitter = User.find(@booking.user_id)
+    @pet = Pet.find(@booking.user_id)
+    @owner = User.find(@pet.user_id)
   end
 
   def new
