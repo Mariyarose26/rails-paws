@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :pets do
     resources :bookings
   end
-  root to: "pages#home"
+  root to: "pets#index"
 end
