@@ -15,4 +15,9 @@
 <%= link_to "Book this pet", new_pet_booking_path(@pet) %>
 <%= link_to "Show booking for this pet", pet_bookings_path(@pet) %>
 <h3><%= @user.first_name %></h3>
+
 </div>
+<%= link_to "Delete",
+           pet_path(@pet),
+           method: :delete,
+           data: { confirm: "Are you sure?" } %>
