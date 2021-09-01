@@ -1,11 +1,12 @@
+<% if current_user.user_type != "owner" %>
 <div class="p-5">
-<h1>Book this Pet!</h1>
+<h1>Apply to Be a Sitter for <%= @pet.name %>!</h1>
 
 <%= simple_form_for [@pet, @booking] do |f| %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
-  <%= f.input :status, collection: Booking.statuses.keys %>
-  <%= f.input :price %>
+  <%= f.input :price, hint: ("Please submit a Quote for the Sitter to Review") %>
   <%= f.submit %>
 <% end %>
 </div>
+<% end %>

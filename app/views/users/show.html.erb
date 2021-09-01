@@ -3,7 +3,7 @@
   # user should be able to view all his details, edit %>
 
   <div class="profile container">
-    <img src="https://source.unsplash.com/random/150x150" />
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
     <div class="info">
         <h3>Your details</h3>
         <h4>Hi <%= @user.first_name %> <%= @user.last_name %></h4>
