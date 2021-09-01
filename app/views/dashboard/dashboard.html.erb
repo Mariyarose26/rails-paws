@@ -11,7 +11,7 @@
     <% end %>
     <% if current_user.user_type != "owner" %>
     <li class="nav-item" role="presentation">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Bookings Created</a>
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Applied Bookings</a>
     </li>
     <% end %>
   </ul>
@@ -55,6 +55,7 @@
       <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
         <div class="row">
           <% @current_user_bookings.each do |b| %>
+          <% @pets.each do |p| %>
             <div class="col-4">
               <div class="card">
                 <div class="card-body">
@@ -64,6 +65,7 @@
                 </div>
               </div>
             </div>
+            <% end %>
           <% end %>
         </div>
       </div>
