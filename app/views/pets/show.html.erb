@@ -13,6 +13,6 @@
 <h3><%= @pet.name %></h3>
 <p><%= @pet.description %></p>
 <%= link_to "Book this pet", new_pet_booking_path(@pet) %>
-<%= link_to "Show booking for this pet", booking_path(@pet) %>
+<%= link_to "Show booking for this pet", pet_bookings_path(@pet) %>
 <h3><%= @user.first_name %></h3>
 </div>
