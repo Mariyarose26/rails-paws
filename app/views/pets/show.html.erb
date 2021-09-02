@@ -4,20 +4,22 @@
 <br>
 <h3><%= @pet.name %></h3>
 <p><%= @pet.description %></p>
-<% if @pet.available %>
+<% if @pet.available == "Available" %>
   <p class="text-success">Requires a Sitter</p>
+  <% elsif @pet.available == "Booked" %>
+  <p class="text-success">This Pet is Booked</p>
 <% else %>
   <p class="text-warning">Doesnt Require a Sitter</p>
 <% end %>
-<% if current_user == @user%>
+<% if current_user == @user %>
   <%= link_to "Edit", edit_pet_path(@pet) %> |
   <%= link_to "Delete",
-            pet_path(@pet),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
+              pet_path(@pet),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
   <br>
- <% end  %>
-<%# Cant view the bookings if its not your pet i.e. Only pet owners can view the bookings from this page%>
+ <% end %>
+<% # Cant view the bookings if its not your pet i.e. Only pet owners can view the bookings from this page %>
 <% if @pet.user == current_user %>
 <%= link_to "View Bookings", pet_bookings_path(@pet) %>
 <% else %>

@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
+    @pet = Pet.find(params[:pet_id])
   end
 
   def show
@@ -34,8 +35,12 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
+    @pet = @booking.pet
     @booking.update(booking_params)
-
+    if @booking.status == "approved"
+      @pet.available = 2
+      @pet.save
+    end
     redirect_to booking_path(@booking)
   end
 
