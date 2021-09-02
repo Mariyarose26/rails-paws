@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  enum status: [:approved, :denied, :cancelled]
+  enum status: [:pending, :approved, :denied ]
   belongs_to :user
   belongs_to :pet
   validates :start_date, :end_date, presence: true
