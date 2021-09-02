@@ -4,9 +4,9 @@
 <br>
 <h3><%= @pet.name %></h3>
 <p><%= @pet.description %></p>
-<% if @pet.available == "Available" %>
+<% if @pet.available == 0 %>
   <p class="text-success">Requires a Sitter</p>
-  <% elsif @pet.available == "Booked" %>
+<% elsif @pet.available == 2 %>
   <p class="text-success">This Pet is Booked</p>
 <% else %>
   <p class="text-warning">Doesnt Require a Sitter</p>

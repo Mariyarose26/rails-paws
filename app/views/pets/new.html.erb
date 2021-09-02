@@ -1,13 +1,3 @@
 <div class="p-5">
-<%= simple_form_for(@pet) do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :pet_type, :collection => %w[Dog Cat Bird Other] %>
-  <%= f.input :available, :collection => %w[Available Unavailable] %>
-  <%= f.input :available_from, hint: ("Please specify the days you require a sitter") %>
-  <%= f.input :available_till %>
-  <%= f.input :booking_requirements, hint: ("Please specify any booking requirements")  %>
-  <%= f.submit %>
-<% end %>
+ <%= render "form", pet: @pet %>
 </div>
