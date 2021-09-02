@@ -1,13 +1,20 @@
-<%= simple_form_for(pet) do |f| %>
-  <%= f.input :photo, as: :file %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :pet_type, :collection => %w[Dog Cat Bird Other] %>
-  <%= f.input :available, :collection => %w[Available Unavailable Booked], input_html: {id: "availability-dropdown"} %>
-  <div class = "availability-fields">
-    <%= f.input :available_from, hint: ("Please specify the days you require a sitter") %>
-    <%= f.input :available_till %>
-    <%= f.input :booking_requirements, hint: ("Please specify any booking requirements")  %>
-  </div>
-  <%= f.submit  %>
-<% end %>
+<div class="container m-10">
+  <%= simple_form_for(pet) do |f| %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :pet_type, :collection => %w[Dog Cat Bird Other] %>
+    <%= f.input :available, :collection => %w[Available Unavailable], input_html: {id: "availability-dropdown"} %>
+    <div class = "availability-fields">
+      <%= f.input :available_from,
+                  as: :date,
+                  order: [:day, :month, :year],
+                  hint: ("Please specify the days you require a sitter") %>
+      <%= f.input :available_till,
+                  as: :date,
+                  order: [:day, :month, :year] %>
+      <%= f.input :booking_requirements, hint: ("Please specify any booking requirements")  %>
+    </div>
+    <%= f.submit  %>
+  <% end %>
+</div>
