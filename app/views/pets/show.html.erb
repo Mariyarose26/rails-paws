@@ -8,6 +8,7 @@
           <p class="card-text"><%= @pet.description %></p>
           <% if @pet.available == 0 %>
             <p class="text-success">Requires a Sitter</p>
+            <p><% @pet.available_from %> - <% @pet.available_till %></p>
           <% elsif @pet.available == 2 %>
             <p class="text-success">This Pet is Booked</p>
           <% else %>
@@ -30,22 +31,22 @@
         </div>
       </div>
     </div>
-    <div class="col-5">
-      <div class="card" >
-        <div class="d-flex p-1 mt-2 ">
-          <div class="photo">
-            <%= cl_image_tag @user.photo.key, height: 300, width: 400,  class: "user-photo", crop: :fill %>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="card-text"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
-          <%= link_to "Contact #{@user.first_name.capitalize}", pet_path(@pet), class: "btn btn-primary btn-block mb-2 " %>
-          <hr>
-          <p style="text-align:center;">Cancellation policy: Flexible</p>
-          <div class="credit-cards" style="text-align:center; width: 100%">
-            <img height="40" src="https://shoplineimg.com/assets/footer/card_visa.png"/>
-            <img height="40" class = "ml-3" src="https://shoplineimg.com/assets/footer/card_master.png"/>
-            <img height="40" class = "ml-3" src="https://shoplineimg.com/assets/footer/card_paypal.png"/>
+    <div class="col-4">
+      <div class="card">
+        <div class="d-flex p-1 mt-2">
+          <div class="profile container">
+            <%= cl_image_tag @user.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+            <div class="card-body">
+              <p class="card-text"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
+              <%= link_to "Contact #{@user.first_name.capitalize}", pet_path(@pet), class: "btn btn-primary btn-block mb-2 " %>
+              <hr>
+              <p style="text-align:center;">Cancellation policy: Flexible</p>
+              <div class="credit-cards" style="text-align:center; width: 100%">
+                <img height="40" src="https://shoplineimg.com/assets/footer/card_visa.png"/>
+                <img height="40" class = "ml-3" src="https://shoplineimg.com/assets/footer/card_master.png"/>
+                <img height="40" class = "ml-3" src="https://shoplineimg.com/assets/footer/card_paypal.png"/>
+              </div>
+            </div>
           </div>
         </div>
       </div>

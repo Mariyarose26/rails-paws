@@ -3,7 +3,7 @@
   # user should be able to view all his details, edit %>
 
   <div class="profile container d-flex">
-    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, class: "rounded" %>
     <div class="info pl-5">
       <h4><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h4>
       <p><%= @user.email %></p>
@@ -18,11 +18,13 @@
   </div>
   <br>
   <hr>
-  <h3 class='text-center'>Your Pets</h3>
+  <% if current_user.user_type != "sitter" %>
+    <h3 class='text-center'>Your Pets</h3>
+  <% end %>
   <div class="pets container">
     <div class="cards d-flex">
       <% @pets.each do |pet| %>
-        <div class="card m-3" style="width: 18rem;">
+        <div class="card-user">
           <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
           <div class="card-body">
             <h4 class="card-title"><%= pet.name %></h4>
