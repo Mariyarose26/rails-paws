@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2021_09_02_040010) do
     t.bigint "user_id"
     t.date "start_date"
     t.date "end_date"
+    t.integer "status"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
