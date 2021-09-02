@@ -1,19 +1,20 @@
-<p>SHOW PAGE</p>
-<%# # User should be able see, create, edit and delete his pets
-# user should be able to view all his details, edit %>
+<div class="p-5">
+  <%# # User should be able see, create, edit and delete his pets
+  # user should be able to view all his details, edit %>
 
-<div class="profile container">
-  <img src="https://source.unsplash.com/random/150x150" />
-  <div class="info">
-      <h4>Hi <%= @user.first_name %> <%= @user.last_name %></h4>
-      <h3>Your details</h3>
-      <p><%= @user.email %></p>
-      <p><%= @user.address %></p>
-      <p><strong>Pet: </strong><%= @user.user_type %></p>
-  </div>
-  <div class="action-routes">
-    <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
-    <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
-    <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+  <div class="profile container">
+    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <div class="info">
+        <h3>Your details</h3>
+        <h4>Hi <%= @user.first_name %> <%= @user.last_name %></h4>
+        <p><%= @user.email %></p>
+        <p><%= @user.address %></p>
+        <p><strong>Pet: </strong><%= @user.user_type %></p>
+    </div>
+    <div class="action-routes">
+      <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+      <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+      <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+    </div>
   </div>
 </div>

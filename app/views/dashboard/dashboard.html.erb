@@ -1,40 +1,75 @@
-<h1>Dashboard</h1>
-<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Your Pets</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Bookings Created</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Your Bookings</a>
-  </li>
-</ul>
-<div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    <div class="container mb-5">
-      <div class="container">
-        <div class="row">
-            <% @pets.each do |pet| %>
-              <div class="col-4">
-                <div class="card">
-                  <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                  <div class="card-body">
-                  <h4 class="card-title"><%= pet.name %></h4>
-                  <p class="card-text"><%= pet.description %></p>
-                  <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
+<div class="container">
+  <h1>Dashboard</h1>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <% if current_user.user_type != "sitter" %>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Your Pets</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Your Pets Booked</a>
+    </li>
+    <% end %>
+    <% if current_user.user_type != "owner" %>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Applied Bookings</a>
+      </li>
+    <% end %>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="container mb-5">
+        <div class="container">
+          <div class="row">
+              <% @pets.each do |pet| %>
+                <div class="col-4">
+                  <div class="card">
+                    <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                    <div class="card-body">
+                    <h4 class="card-title"><%= pet.name %></h4>
+                    <p class="card-text"><%= pet.description %></p>
+                    <% if pet.available %>
+                      <p class="card-text text-success">Requires a Sitter</p>
+                    <% else %>
+                      <p class="card-text text-warning">Doesnt Require a Sitter</p>
+                    <% end %>
+                    <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
+                    <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-primary" %>
+                    </div>
                   </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-      All Owner's Bookings
-    </div>
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-      Test3
-    </div>
+      <div class="tab-pane fade show" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div class="row">
+          <% @ownerbookings.each do |booking| %>
+            <div class="col-4">
+              <div class="card">
+                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                <h4 class="card-title"><%= booking.id %></h4>
+                <p class="card-text"><%= booking.start_date %></p>
+                <p class="card-text"><%= booking.end_date %></p>
+                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row">
+          <% current_user.bookings.each do |booking| %>
+            <div class="col-4">
+              <div class="card">
+                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                <h4 class="card-title"><%= booking.id %></h4>
+                <p class="card-text"><%= booking.start_date %></p>
+                <p class="card-text"><%= booking.end_date %></p>
+                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
 </div>
