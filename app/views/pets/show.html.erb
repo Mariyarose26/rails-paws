@@ -15,7 +15,7 @@
         <div class="card" >
         <div class="d-flex p-1 mt-2 ">
             <div class="photo">
-              <%= cl_image_tag @pet.photo.key, height: 300, width: 400,  class: "user-photo", crop: :fill %>
+              <%= cl_image_tag @pet.photo.key, height: 300, width: 400, class: "user-photo", crop: :fill %>
             </div>
             <div class="name align-self-center ml-3 mt-3">
               <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name %></h4>
@@ -83,5 +83,46 @@
                                 </div>
                             </div>
                         </div>
+</div>
+                                </div>
+                            </div>
+                        </div>
 
+                        </div>
+
+<div class = "d-flex p-5 ml-5" >
+<div class="container mb-5 p-3" >
+  <%= cl_image_tag @pet.photo.key, height: 300, width: 400 %>
+<br>
+<h3><%= @pet.name %></h3>
+<p><%= @pet.description %></p>
+<% if @pet.available == "Available" %>
+  <p class="text-success">Requires a Sitter</p>
+  <% elsif @pet.available == "Booked" %>
+  <p class="text-success">This Pet is Booked</p>
+<% else %>
+  <p class="text-warning">Doesnt Require a Sitter</p>
+<% end %>
+<% if current_user == @user %>
+  <%= link_to "Edit", edit_pet_path(@pet) %> |
+  <%= link_to "Delete",
+              pet_path(@pet),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+  <br>
+ <% end %>
+<% # Cant view the bookings if its not your pet i.e. Only pet owners can view the bookings from this page %>
+<% if @pet.user == current_user %>
+<%= link_to "View Bookings", pet_bookings_path(@pet) %>
+<% else %>
+<%= link_to "Apply to be the Sitter", new_pet_booking_path(@pet) %>
+<% end %>
+</div>
+
+<div class="container mb-2 p-3" >
+<h3>Owner: <%= @user.first_name %> <%= @user.last_name %></h3>
+<%= @user.address %>
+<br><br>
+
+ </div>
 </div>
