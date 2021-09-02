@@ -5,7 +5,9 @@
   <%= f.input :description %>
   <%= f.input :pet_type, :collection => %w[Dog Cat Other] %>
   <%= f.input :available, :collection => %w[Available Unavailable Booked] %>
-  <%= f.submit %>
-
+  <%= f.input :available_from, hint: ("Please specify the days you require a sitter") %>
+  <%= f.input :available_till %>
+  <%= f.input :booking_requirements, hint: ("Please specify any booking requirements")  %>
+  <%= f.submit  %>
 <% end %>
 </div>

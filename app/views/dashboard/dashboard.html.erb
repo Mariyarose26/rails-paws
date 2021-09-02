@@ -59,8 +59,10 @@
                 <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
                 <p class="card-text"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
                 <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
-                <%= link_to "Approve", booking_path(booking, booking: { status: "approved" }), method: :patch, class: "btn btn-primary" %>
-                <%= link_to "Deny", booking_path(booking, booking: { status: "denied" }), method: :patch, class: "btn btn-primary" %>
+                <% if booking.status == "pending" %>
+                  <%= link_to "Approve", booking_path(booking,booking: {status: "approved"}), method: :patch, class: "btn btn-primary" %>
+                  <%= link_to "Deny", booking_path(booking,booking: {status: "denied"}), method: :patch, class: "btn btn-primary" %>
+                <% end %>
                 <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
               </div>
             </div>
