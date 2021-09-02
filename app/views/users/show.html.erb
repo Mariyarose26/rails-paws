@@ -2,19 +2,24 @@
   <%# # User should be able see, create, edit and delete his pets
   # user should be able to view all his details, edit %>
 
-  <div class="profile container d-flex">
-    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, class: "rounded" %>
-    <div class="info pl-5">
-      <h4><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h4>
-      <p><%= @user.email %></p>
-      <p><%= @user.address.capitalize %></p>
-      <p><strong>Pet: </strong><%= @user.user_type %></p>
-      <div class="action-routes">
-        <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
-        <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
-        <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+  <div class="profile container">
+    <div class="d-flex">
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, class: "rounded" %>
+      <div class="info pl-5">
+        <h4><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h4>
+        <p><%= @user.email %></p>
+        <p><%= @user.address.capitalize %></p>
+        <p><strong>User Type: </strong><%= @user.user_type %></p>
+        <div class="action-routes">
+          <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+          <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "ml-3 text-warning text-decoration-none" %></td>
+          <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+        </div>
       </div>
     </div>
+    <br>
+    <h6><strong>Profile</strong></h6>
+    <p><%= @user.profile %></p>
   </div>
   <br>
   <hr>

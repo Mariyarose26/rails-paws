@@ -62,6 +62,7 @@
                         <%= link_to "Deny", booking_path(booking, booking: {status: "denied"}), method: :patch, class: "btn btn-danger custom" %>
                       </div>
                     <% end %>
+                    <%= link_to "View Sitter", user_path(booking.user_id), class: "btn btn-warning custom-lg ml-3" %>
                   </div>
                   <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary custom-lg mb-4 ml-4 mt-0" %>
                 </div>
