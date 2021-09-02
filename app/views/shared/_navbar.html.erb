@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <p>Hi, <%= current_user.first_name %> |
+        <p id="screen-name">Hi, <%= current_user.first_name.capitalize %> |
         <% if current_user.user_type == "both" %>
           Both Owner & Sitter</p>
         <% else %>

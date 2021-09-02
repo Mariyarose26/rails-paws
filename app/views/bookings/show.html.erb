@@ -2,13 +2,13 @@
 <h1>Booking ID: <%= @booking.id %></h1>
 
 <ul class="list-group">
-    <li class="list-group-item"><%= "Start Date - #{@booking.start_date}" %></li>
-    <li class="list-group-item"><%= "End Date - #{@booking.end_date}" %></li>
-    <li class="list-group-item"><%= "Price - #{@booking.price}" %></li>
-    <li class="list-group-item"><%= "Status - #{@booking.status}" %></li>
-    <li class="list-group-item"><%= "Pet - #{@pet.name}" %></li>
-    <li class="list-group-item"><%= "Owner - #{@owner.first_name}" %></li>
-    <li class="list-group-item"><%= "Sitter - #{@sitter.first_name}" %></li>
+  <li class="list-group-item"><strong>Pet: </strong><%= @pet.name.capitalize %></li>
+  <li class="list-group-item"><strong>Owner: </strong><%= @owner.first_name.capitalize %></li>
+  <li class="list-group-item"><strong>Sitter: </strong><%= @sitter.first_name.capitalize %></li>
+  <li class="list-group-item"><strong>Start Date: </strong><%= @booking.start_date %></li>
+  <li class="list-group-item"><strong>End Date: </strong><%= @booking.end_date %></li>
+  <li class="list-group-item"><strong>Price: </strong><%= @booking.price %></li>
+  <li class="list-group-item"><strong>Current Status: </strong><%= @booking.status.capitalize %></li>
 </ul>
 
 <% if @pet.user == current_user %>

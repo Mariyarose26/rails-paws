@@ -15,86 +15,87 @@
       </li>
     <% end %>
   </ul>
-<div class="tab-content" id="pills-tabContent">
-
-
-  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-    <div class="container mb-5">
-      <div class="container">
-        <div class="row">
-          <% @pets.each do |pet| %>
-            <div class="col-4">
-              <div class="card">
-                <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                <div class="card-body">
-                  <h4 class="card-title"><%= pet.name %></h4>
-                  <p class="card-text"><%= pet.description %></p>
-                  <% if pet.available != "Booked" && pet.available == "Available" %>
-                    <p class="card-text text-success">Requires a Sitter</p>
-                  <% else %>
-                    <p class="card-text text-warning">Doesnt Require a Sitter</p>
-                  <% end %>
-                  <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
-                  <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-primary" %>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="container mb-5">
+        <div class="container">
+          <div class="row">
+            <% @pets.each do |pet| %>
+              <div class="col-4">
+                <div class="card">
+                  <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                  <div class="card-body p-2">
+                    <h4 class="card-title"><%= pet.name %></h4>
+                    <p class="card-text"><%= pet.description %></p>
+                    <% if pet.available != "Booked" && pet.available == "Available" %>
+                      <p class="card-text text-success">Requires a Sitter</p>
+                    <% else %>
+                      <p class="card-text text-warning">Doesnt Require a Sitter</p>
+                    <% end %>
+                    <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
+                    <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-primary" %>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
-
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-    <div class="container mb-5">
-      <div class="container">
-        <div class="row">
-          <% @ownerbookings.each do |booking| %>
-            <div class="col-4">
-              <div class="card">
-                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                <p class="card-title"><strong>Booking Ref: </strong><%= booking.id %></p>
-                <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
-                <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
-                <p class="card-text"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
-                <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
-                <div class = "approvedeny btn-group">
-                  <% if booking.status == "pending" %>
-                    <%= link_to "Approve", booking_path(booking, booking: { status: "approved" }), method: :patch, class: "btn btn-primary" %>
-                    <%= link_to "Deny", booking_path(booking, booking: { status: "denied" }), method: :patch, class: "btn btn-primary" %>
-                  <% end %>
+   </div>
+   <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div class="container mb-5">
+        <div class="container">
+          <div class="row">
+            <% @ownerbookings.each do |booking| %>
+              <div class="col-4">
+                <div class="card">
+                  <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                  <div class="p-2">
+                    <p class="card-title"><strong>Booking Ref: </strong><%= booking.id %></p>
+                    <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
+                    <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
+                    <p class="card-text"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
+                    <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
+                    <p class="card-text"><strong>Price: $</strong><%= booking.price %></p>
+                    <% if booking.status == "pending" %>
+                      <div class="d-block">
+                        <%= link_to "Approve", booking_path(booking, booking: {status: "approved"}), method: :patch, class: "btn btn-success custom" %>
+                        <%= link_to "Deny", booking_path(booking, booking: {status: "denied"}), method: :patch, class: "btn btn-danger custom" %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
                 </div>
-                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <div class="container mb-5">
+        <div class="container">
+          <div class="row">
+            <% @bookings.each do |booking| %>
+              <div class="col-4">
+                <div class="card">
+                  <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
+                  <div class= "p-2">
+                    <p class="card-title"><strong>Ref: </strong><%= booking.id %></p>
+                    <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
+                    <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
+                    <p class="card-text"><strong>Dates: </strong><%= booking.start_date %> to <%= booking.end_date %></p>
+                    <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
+                    <p class="card-text"><strong>Price: $</strong><%= booking.price %></p>
+                  </div>
+                  <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-    <div class="container mb-5">
-      <div class="container">
-        <div class="row">
-          <% @bookings.each do |booking| %>
-            <div class="col-4">
-              <div class="card">
-                <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                <p class="card-title"><strong>Ref: </strong><%= booking.id %></p>
-                <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
-                <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
-                <p class="card-text"><strong>Dates: </strong><%= booking.start_date %> to <%= booking.end_date %></p>
-                <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
-                <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </div>

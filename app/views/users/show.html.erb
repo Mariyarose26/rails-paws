@@ -16,12 +16,13 @@
       </div>
     </div>
   </div>
+  <br>
   <hr>
-  <h3>Your Pets</h3>
+  <h3 class='text-center'>Your Pets</h3>
   <div class="pets container">
-    <div class="cards p-5 d-flex">
+    <div class="cards d-flex">
       <% @pets.each do |pet| %>
-        <div class="card" style="width: 18rem;">
+        <div class="card m-3" style="width: 18rem;">
           <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
           <div class="card-body">
             <h4 class="card-title"><%= pet.name %></h4>
