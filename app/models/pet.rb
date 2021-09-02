@@ -7,4 +7,5 @@ class Pet < ApplicationRecord
   validates :pet_type, inclusion: { in: PET }
   has_one_attached :photo
   enum available: [:Available, :Unavailable, :Booked]
+  has_many :availabilities
 end
