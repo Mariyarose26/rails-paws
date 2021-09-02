@@ -13,14 +13,9 @@
 @import "pages/index";
 @import "components/footer";
 
-.cover {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url(asset_path("dog.jpg"));
-  height: 300px;
+#cover {
+  height: 500px;
   width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 
 .btn-flat {
@@ -37,4 +32,30 @@
   border-radius: 4px;
   background: #6a757e;
   transition: background 0.3s ease;
+}
+
+.card {
+  border-radius: 20px;
+}
+
+.photo .user-photo {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-left: 10px;
+}
+
+#w-100 {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  object-fit: cover;
+}
+
+.w-100 {
+  object-fit: cover;
+}
+
+.form-control {
+  border-radius: 10px;
 }
