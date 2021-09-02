@@ -27,7 +27,12 @@ class PetsController < ApplicationController
   end
 
   def update
+    @booking = Booking.where(pet_id: @pet.id).first
     @pet.update(pet_params)
+    if @pet.available == "Unavailable"
+      @booking.status = 0
+      @booking.save
+    end
     redirect_to pet_path(@pet)
   end
 
