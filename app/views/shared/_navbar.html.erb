@@ -13,7 +13,7 @@
         <% if current_user.user_type == "both" %>
           Both Owner & Sitter</p>
         <% else %>
-          <%= current_user.user_type.capitalize %></p>
+          <%= current_user.user_type.capitalize %> Profile</p>
         <% end %>
         <li class="nav-item dropdown">
           <% if current_user.photo.attached? %>
