@@ -5,6 +5,6 @@ class DashboardController < ApplicationController
     # Owner
     @ownerbookings = Booking.where(pet: @pets)
     # Sitter
-    @bookings = Booking.where(user: @user)
+    @bookings = Booking.where(user: current_user)
   end
 end
