@@ -6,12 +6,13 @@
         <div class="card-body">
           <h4 class="card-title"><%= @pet.name %></h4>
           <p class="card-text"><%= @pet.description %></p>
-          <% if @pet.available == 0 %>
-            <p class="text-success">Requires a Sitter</p>
-            <p><% @pet.available_from %> - <% @pet.available_till %></p>
-          <% elsif @pet.available == 2 %>
+          <% if @pet.available == "Available" %>
+            <p class="text-success">Requires a Sitter for: </p>
+            <p class="card-text"><strong>Dates: </strong><%= "#{@pet.available_from} - #{@pet.available_till}" %></p>
+            <p class="card-text"><strong>Requirements: </strong><%= @pet.booking_requirements %></p>
+          <% elsif @pet.available == "Booked" %>
             <p class="text-success">This Pet is Booked</p>
-          <% else %>
+          <% elsif @pet.available == "Unavailable" %>
             <p class="text-warning">Doesnt Require a Sitter</p>
           <% end %>
           <% if current_user == @user %>
@@ -25,7 +26,7 @@
           <% # Cant view the bookings if its not your pet i.e. Only pet owners can view the bookings from this page %>
           <% if @pet.user == current_user %>
             <%= link_to "View Bookings", pet_bookings_path(@pet) %>
-          <% elsif @pet.user != current_user && @pet.available == 0  %>
+          <% elsif @pet.user != current_user && @pet.available == "Available" %>
             <%= link_to "Apply to be the Sitter", new_pet_booking_path(@pet) %>
           <% end %>
         </div>
@@ -33,9 +34,9 @@
     </div>
     <div class="col-4">
       <div class="card">
+        <%= cl_image_tag @user.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
         <div class="d-flex p-1 mt-2">
           <div class="profile container">
-            <%= cl_image_tag @user.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
             <div class="card-body">
               <p class="card-text"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
               <%= link_to "Contact #{@user.first_name.capitalize}", pet_path(@pet), class: "btn btn-primary btn-block mb-2 " %>
