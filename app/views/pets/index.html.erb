@@ -53,14 +53,18 @@
 <h3 class = "mb-3">Pets that need sitting</h3>
   <div class="row">
     <% @pets.each do |pet| %>
-      <% if pet.available == "Available" && pet.user != current_user %>
+      <% if pet.available == "Available" || pet.available == "Booked" && pet.user != current_user %>
         <div class="col-4">
           <div class="card">
             <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", id:"w-100", crop: :fill %>
             <div class="card-body">
-              <h4 class="card-title"><%= pet.name %></h4>
-              <p class="card-text"><%= pet.description %></p>
-              <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
+
+            <h4 class="card-title"><%= pet.name %></h4>
+            <p class="card-text"><%= pet.description %></p>
+            <p class="card-text"><%= "Owner: #{pet.user.first_name}" %></p>
+            <p class="card-text"><%= "Status: #{pet.available}" %></p>
+            <p class="card-text"><%= "Dates: #{pet.available_from} - #{pet.available_till}" %></p>
+            <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
             </div>
           </div>
         </div>
