@@ -18,7 +18,7 @@
                   required: true,
                   input_html: { autocomplete: "address" } %>
       <%= f.input :photos, as: :file %>
-      <%= f.input :user_type, :collection => %w[owner sitter both] %>
+      <%= f.input :user_type, hint: ("Please select both if you are Both an Owner & Sitter"), :collection => %w[owner sitter both] %>
     </div>
 
     <div class="form-actions">
