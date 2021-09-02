@@ -56,14 +56,9 @@
       <% if pet.available == "Available" || pet.available == "Booked" && pet.user != current_user %>
         <div class="col-4">
           <div class="card">
-            <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", id:"w-100", crop: :fill %>
+            <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", id: "w-100", crop: :fill %>
             <div class="card-body">
-<<<<<<< HEAD
             <h4 class="card-title"><%= "#{pet.name} (#{pet.pet_type})" %></h4>
-=======
-
-            <h4 class="card-title"><%= pet.name %></h4>
->>>>>>> e61f006a813073043aa1c090a5946a9cf1599bb9
             <p class="card-text"><%= pet.description %></p>
             <p class="card-text"><%= "Owner: #{pet.user.first_name}" %></p>
             <p class="card-text"><%= "Status: #{pet.available}" %></p>
