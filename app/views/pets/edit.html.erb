@@ -4,8 +4,8 @@
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :pet_type, :collection => %w[Dog Cat Other] %>
-  <%= f.input :available, :collection => %w[Available Unavailable] %>
-  <%= f.submit  %>
+  <%= f.input :available, :collection => %w[Available Unavailable Booked] %>
+  <%= f.submit %>
 
 <% end %>
 </div>

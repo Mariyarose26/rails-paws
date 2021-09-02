@@ -54,13 +54,13 @@
             <div class="col-4">
               <div class="card">
                 <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                <p class="card-title"><strong>Ref: </strong><%= booking.id %></p>
+                <p class="card-title"><strong>Booking Ref: </strong><%= booking.id %></p>
                 <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
                 <p class="card-title"><strong>Owner: </strong><%= booking.pet.user.first_name %> <%= booking.pet.user.last_name %></p>
-                <p class="card-text"><strong>Dates: </strong><%= booking.start_date %> to <%= booking.end_date %></p>
+                <p class="card-text"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
                 <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
-                <%= link_to "Approve", booking_path(booking,booking: {status: "approved"}), method: :patch, class: "btn btn-primary" %>
-                <%= link_to "Deny", booking_path(booking,booking: {status: "denied"}), method: :patch, class: "btn btn-primary" %>
+                <%= link_to "Approve", booking_path(booking, booking: { status: "approved" }), method: :patch, class: "btn btn-primary" %>
+                <%= link_to "Deny", booking_path(booking, booking: { status: "denied" }), method: :patch, class: "btn btn-primary" %>
                 <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary" %>
               </div>
             </div>
