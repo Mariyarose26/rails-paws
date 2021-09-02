@@ -30,7 +30,9 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.input :user_type, collection: User.user_types.keys %>
+      <%= f.input :user_type,
+                  hint: ("If you select an owner profile you will not be able to sit pets"),
+                  collection: User.user_types.keys %>
 
     </div>
 
