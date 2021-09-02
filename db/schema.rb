@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_02_040010) do
+ActiveRecord::Schema.define(version: 2021_09_02_045340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,22 +43,11 @@ ActiveRecord::Schema.define(version: 2021_09_02_040010) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "availabilities", force: :cascade do |t|
-    t.date "available_from"
-    t.date "available_till"
-    t.text "booking_requirements"
-    t.bigint "pet_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["pet_id"], name: "index_availabilities_on_pet_id"
-  end
-
   create_table "bookings", force: :cascade do |t|
     t.bigint "pet_id"
     t.bigint "user_id"
     t.date "start_date"
     t.date "end_date"
-    t.integer "status"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -75,6 +64,9 @@ ActiveRecord::Schema.define(version: 2021_09_02_040010) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "description"
     t.integer "available"
+    t.date "available_from"
+    t.date "available_till"
+    t.text "booking_requirements"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 

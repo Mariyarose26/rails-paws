@@ -20,6 +20,7 @@
             <p class="card-text"><%= pet.description %></p>
             <p class="card-text"><%= "Owner: #{pet.user.first_name}" %></p>
             <p class="card-text"><%= "Status: #{pet.available}" %></p>
+            <p class="card-text"><%= "Dates: #{pet.available_from} - #{pet.available_till}" %></p>
             <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
             </div>
           </div>
