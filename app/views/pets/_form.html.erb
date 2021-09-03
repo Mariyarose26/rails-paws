@@ -4,7 +4,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :pet_type, :collection => %w[Dog Cat Bird Other] %>
-    <%= f.input :available, :collection => %w[Available Unavailable], input_html: {id: "availability-dropdown"} %>
+    <%= f.input :available, :collection => %w[Available Unavailable Booked], input_html: {id: "availability-dropdown"} %>
     <div class = "availability-fields">
       <%= f.input :available_from,
                   as: :date,
