@@ -1,7 +1,4 @@
-  <%# # User should be able see, create, edit and delete his pets
-  # user should be able to view all his details, edit %>
-
-<div class="profile mt-5 ml-5 mr-5">
+<div id="profile">
   <div class="d-flex">
     <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill, class: "rounded" %>
     <div class="info pl-5">
@@ -10,9 +7,9 @@
       <p><%= @user.address.capitalize %></p>
       <p><strong>User Type: </strong><%= @user.user_type.capitalize %></p>
       <div class="action-routes">
-        <td><%= link_to 'Edit Profile', edit_user_path(@user), class: "text-warning text-decoration-none mr-3" %></td>
-        <td><%= link_to 'Change Password', edit_user_registration_path(@user), class: "text-warning text-decoration-none" %></td>
-        <%# <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
+        <td><%= link_to "Edit Profile", edit_user_path(@user), class: "text-warning text-decoration-none mr-3" %></td>
+        <td><%= link_to "Change Password", edit_user_registration_path(@user), class: "text-warning text-decoration-none" %></td>
+        <% # <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
       </div>
     </div>
   </div>
@@ -24,9 +21,9 @@
 </div>
 <% if @user.user_type != "sitter" %>
   <br><hr>
-  <h3 class='text-center'>Your Pets</h3>
+  <h3 class='text-center mb-5'>Your Pets</h3>
 <% end %>
-<div class="pets container">
+<div class="pets container mb-5">
   <div class="cards d-flex">
     <% @pets.each do |pet| %>
       <div class="card-user">
