@@ -17,12 +17,13 @@
     </div>
   </div>
   <br>
-  <h6><strong>Profile</strong></h6>
-  <p><%= @user.profile %></p>
+  <% if @user.profile %>
+    <h6><strong>Profile</strong></h6>
+    <p><%= @user.profile %></p>
+  <% end %>
 </div>
 <% if @user.user_type != "sitter" %>
-  <br>
-  <hr>
+  <br><hr>
   <h3 class='text-center'>Your Pets</h3>
 <% end %>
 <div class="pets container">
