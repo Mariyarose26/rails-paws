@@ -26,7 +26,7 @@
           <% # Cant view the bookings if its not your pet i.e. Only pet owners can view the bookings from this page %>
           <% if @pet.user == current_user %>
             <%= link_to "View Bookings", pet_bookings_path(@pet) %>
-          <% elsif @pet.user != current_user && @pet.available == "Available" %>
+          <% elsif current_user.user_type != "owner" && @pet.available == "Available" %>
             <%= link_to "Apply to be the Sitter", new_pet_booking_path(@pet), class: "btn btn-primary btn-block mb-2" %>
           <% end %>
         </div>
