@@ -50,7 +50,7 @@
 
 
 <div class="container">
-<h3 class = "text-center mb-3">Pets that need a Sitter!</h3>
+<h3 class = "text-center mb-5">Pets that need a Sitter!</h3>
   <div class="row">
     <% @pets.each do |pet| %>
       <% if pet.available == "Available" || pet.available == "Booked" && pet.user != current_user %>
@@ -60,8 +60,6 @@
             <div class="card-body">
             <h4 class="card-title"><%= "#{pet.name} (#{pet.pet_type})" %></h4>
             <p class="card-text"><%= pet.description %></p>
-            <p class="card-text"><%= "Owner: #{pet.user.first_name}" %></p>
-            <p class="card-text"><%= "Status: #{pet.available}" %></p>
             <p class="card-text"><%= "Dates: #{pet.available_from} - #{pet.available_till}" %></p>
             <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
             </div>

@@ -1,6 +1,6 @@
 <div class="container">
-  <h1>Dashboard</h1>
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <h2 class = "mt-5 ml-4">Dashboard</h2>
+  <ul class="nav nav-pills mb-4 mt-4 ml-4" id="pills-tab" role="tablist">
     <% if current_user.user_type != "sitter" %>
     <li class="nav-item" role="presentation">
       <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Your Pets</a>
@@ -24,16 +24,16 @@
               <div class="col-4">
                 <div class="card">
                   <%= cl_image_tag pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
-                  <div class="card-body p-2">
+                  <div class="card-body p-2 ml-3 mt-3">
                     <h4 class="card-title"><%= pet.name %></h4>
                     <p class="card-text"><%= pet.description %></p>
                     <% if pet.available != "Booked" && pet.available == "Available" %>
                       <p class="card-text text-success">Requires a Sitter</p>
                     <% else %>
-                      <p class="card-text text-warning">Doesnt Require a Sitter</p>
+                      <p class="card-text text-secondary">Doesnt Require a Sitter</p>
                     <% end %>
-                    <%= link_to "See Profile", pet_path(pet), class: "btn btn-primary" %>
-                    <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-primary" %>
+                    <%= link_to "See Profile", pet_path(pet), class: "btn btn-outline-primary mb-4 mt-3 " %>
+                    <%= link_to "Edit Profile", edit_pet_path(pet), class: "btn btn-outline-primary mb-4 ml-3 mt-3" %>
                   </div>
                 </div>
               </div>
@@ -51,20 +51,20 @@
                 <div class="card mb-2">
                   <%= cl_image_tag booking.pet.photo.key, height: 300, width: 400, class: "w-100", crop: :fill %>
                   <div class="p-2">
-                    <p class="card-title"><strong>Pet's Name: </strong><%= booking.pet.name %></p>
-                    <p class="card-title"><strong>Sitter: </strong><%= booking.user.first_name %> <%= booking.user.last_name %></p>
-                    <p class="card-text"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
-                    <p class="card-text"><strong>Booking: </strong><%= booking.status.capitalize %></p>
-                    <p class="card-text mb-0"><strong>Price: $</strong><%= booking.price %></p>
+                    <p class="card-title m-3"><strong>Pet's Name:</strong><%= booking.pet.name %></p>
+                    <p class="card-title m-3"><strong>Sitter: </strong><%= booking.user.first_name %> <%= booking.user.last_name %></p>
+                    <p class="card-text m-3"><strong>Dates: </strong><%= booking.start_date.strftime("%d %B") %> to <%= booking.end_date.strftime("%d %B") %></p>
+                    <p class="card-text m-3"><strong>Booking: </strong><%= booking.status.capitalize %></p>
+                    <p class="card-text m-3 "><strong>Price: $</strong><%= booking.price %></p>
                     <% if booking.status == "pending" %>
-                      <div class="d-flex mt-0">
-                        <%= link_to "Approve", booking_path(booking, booking: {status: "approved"}), method: :patch, class: "btn btn-success custom" %>
-                        <%= link_to "Deny", booking_path(booking, booking: {status: "denied"}), method: :patch, class: "btn btn-danger custom" %>
+                      <div class="d-flex m-3 mb-3">
+                        <%= link_to "Approve", booking_path(booking, booking: { status: "approved" }), method: :patch, class: "btn btn-outline-success custom" %>
+                        <%= link_to "Deny", booking_path(booking, booking: { status: "denied" }), method: :patch, class: "btn btn-outline-danger custom" %>
                       </div>
                     <% end %>
-                    <%= link_to "View Sitter", user_path(booking.user_id), class: "btn btn-warning custom-lg ml-3" %>
+                    <%= link_to "View Sitter", user_path(booking.user_id), class: "btn btn-outline-primary custom1 pl-3 pr-4 ml-3 mb-5" %>
+                        <%= link_to "View Booking", booking_path(booking), class: "btn btn-outline-primary custom1  ml-1 mb-5" %>
                   </div>
-                  <%= link_to "View Booking", booking_path(booking), class: "btn btn-primary custom-lg mb-4 ml-4 mt-0" %>
                 </div>
               </div>
             <% end %>
