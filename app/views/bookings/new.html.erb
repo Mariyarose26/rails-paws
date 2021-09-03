@@ -1,12 +1,17 @@
 <% if current_user.user_type != "owner" %>
 <div class="p-5">
 <h1>Apply to Be a Sitter for <%= @pet.name %>!</h1>
-
+<h3>Requires a Sitter for <%= @pet.available_from %> - <%= @pet.available_till %></h3>
+<br>
+<div class="p-10">
 <%= simple_form_for [@pet, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :price, hint: ("Please submit a Quote for the Sitter to Review") %>
+  <%= f.input :start_date, default: @pet.available_from,  as: :date,
+                              order: [:day, :month, :year]  %>
+  <%= f.input :end_date, default: @pet.available_till, as: :date,
+                              order: [:day, :month, :year]  %>
+  <%= f.input :price, hint: ("Please submit a Quote for the Owner to Review") %>
   <%= f.submit %>
 <% end %>
+</div>
 </div>
 <% end %>

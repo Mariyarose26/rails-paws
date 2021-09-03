@@ -1,8 +1,10 @@
 <h1>Edit this Booking!</h1>
 
 <%= simple_form_for [@pet, @booking] do |f| %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
+  <%= f.input :start_date, default: @pet.available_from,  as: :date,
+                              order: [:day, :month, :year] %>
+  <%= f.input :end_date, default: @pet.available_till, as: :date,
+                              order: [:day, :month, :year] %>
   <%= f.input :status, collection: Booking.statuses.keys %>
   <%= f.input :price %>
   <%= f.submit %>

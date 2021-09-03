@@ -41,11 +41,12 @@ class BookingsController < ApplicationController
       @pet.available = 2
       @pet.save
     end
+    redirect_to pet_path(@pet)
     if @booking.status == "pending" || @booking.status == "denied"
       @pet.available = 0
       @pet.save
     end
-    redirect_to booking_path(@booking)
+    redirect_to pet_path(@pet)
   end
 
   def destroy
