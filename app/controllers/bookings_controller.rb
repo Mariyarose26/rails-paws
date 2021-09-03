@@ -46,7 +46,7 @@ class BookingsController < ApplicationController
       @pet.available = 0
       @pet.save
     end
-  redirect_to dashboard_path
+    redirect_to dashboard_path
   end
 
   def destroy

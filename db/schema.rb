@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 2021_09_02_131922) do
   create_table "bookings", force: :cascade do |t|
     t.bigint "pet_id"
     t.bigint "user_id"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
