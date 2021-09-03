@@ -40,7 +40,7 @@
             <div class="card-body">
               <h6 class="text-center"><strong>Contact this Pet's Owner</strong></h6>
               <p class="card-text text-center"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></p>
-              <%= link_to "Contact #{@user.first_name.capitalize}", pet_path(@pet), class: "btn btn-primary btn-block mb-2 " %>
+              <%= mail_to "#{@user.email}", "Contact #{@user.first_name.capitalize}", class: "btn btn-primary btn-block mb-2 " %>
               <hr>
               <p style="text-align:center;">Cancellation policy: Flexible</p>
               <div class="credit-cards" style="text-align:center; width: 100%">
