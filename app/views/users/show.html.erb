@@ -6,11 +6,12 @@
       <p><%= @user.email %></p>
       <p><%= @user.address.capitalize %></p>
       <p><strong>User Type: </strong><%= @user.user_type.capitalize %></p>
-      <div class="action-routes">
-        <td><%= link_to "Edit Profile", edit_user_path(@user), class: "text-warning text-decoration-none mr-3" %></td>
-        <td><%= link_to "Change Password", edit_user_registration_path(@user), class: "text-warning text-decoration-none" %></td>
-        <% # <td><%= link_to 'Show Pets', pets(@user.pets), class: "ml-3 text-warning text-decoration-none"></td> %>
-      </div>
+      <%# If the user viewing this page is not viewing his/her own profile hide these actions %>
+      <% if current_user == @user %>
+        <div class="action-routes">
+          <td><%= link_to "Edit Profile", edit_user_path(@user), class: "text-warning text-decoration-none mr-3" %></td>
+          <td><%= link_to "Change Password", edit_user_registration_path(@user), class: "text-warning text-decoration-none" %></td>        </div>
+      <% end %>
     </div>
   </div>
   <br>

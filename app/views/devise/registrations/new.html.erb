@@ -1,25 +1,19 @@
 <div class="p-5">
   <h2>Sign up</h2>
-
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
-
     <div class="form-inputs">
       <%= f.input :first_name,
                   required: true,
                   autofocus: true,
                   input_html: { autocomplete: "first-name" } %>
-
       <%= f.input :last_name,
                   required: true,
                   input_html: { autocomplete: "last-name" } %>
-
       <%= f.input :photos, as: :file %>
-
       <%= f.input :email,
                   required: true,
                   input_html: { autocomplete: "email" } %>
-
       <%= f.input :address,
                   required: true,
                   input_html: { autocomplete: "address" } %>
@@ -34,14 +28,10 @@
       <%= f.input :user_type,
                   hint: ("If you select an owner profile you will not be able to sit pets"),
                   collection: User.user_types.keys %>
-
     </div>
-
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>
-
     </div>
   <% end %>
-
   <%= render "devise/shared/links" %>
 </div>
